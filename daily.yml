@@ -1,0 +1,36 @@
+name: Daily Morning News
+
+on:
+  schedule:
+    # 北京时间每天早上7:00（UTC时间23:00）
+    - cron: '0 23 * * *'
+  workflow_dispatch:   # 允许手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout代码
+        uses: actions/checkout@v4
+         name:配置Git身份
+        run:
+
+          git config --global user.email "639007302.qq.com"
+          git config --global user.name "luoluo28"
+ 
+      
+      - name: 设置Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      
+      - name: 安装依赖
+        run: pip install requests feedparser
+      
+      - name: 运行早报脚本
+        env:
+          WECHAT_CORP_ID: ${{ secrets.WECHAT_CORP_ID }}
+          WECHAT_AGENT_ID: ${{ secrets.WECHAT_AGENT_ID }}
+          WECHAT_SECRET: ${{ secrets.WECHAT_SECRET }}
+          DEEPSEEK_KEY: ${{ secrets.DEEPSEEK_KEY }}
+        run: python morning_news.py
