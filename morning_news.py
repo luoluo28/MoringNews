@@ -12,6 +12,7 @@ CORP_ID = os.environ.get("CORP_ID")
 AGENT_ID = os.environ.get("AGENT_ID")
 SECRET = os.environ.get("SECRET")
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
+print("DEBUG:DEEPSEEK_API_KEY starts with:",DEEPSEEK_API_KEY[:6]if DEEPSEEK_API_KEY else“NOT FOUND”)
 
 # ================= RSS 源配置 =================
 NEWS_FEEDS = [
