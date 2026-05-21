@@ -14,6 +14,11 @@ SECRET = os.environ.get("SECRET")
 DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY")
 print("DEBUG:DEEPSEEK_API_KEY starts with:",DEEPSEEK_API_KEY[:6]if DEEPSEEK_API_KEY else"NOT FOUND")
 
+# 加上这几句调试日志
+print(f"DEBUG: CORP_ID = {CORP_ID if CORP_ID else 'NOT FOUND'}", flush=True)
+print(f"DEBUG: SECRET = {SECRET[:5] + '...' if SECRET else 'NOT FOUND'}", flush=True)
+print(f"DEBUG: AGENT_ID = {AGENT_ID if AGENT_ID else 'NOT FOUND'}", flush=True)
+
 # ================= RSS 源配置 =================
 NEWS_FEEDS = [
     "https://www.36kr.com/feed",
